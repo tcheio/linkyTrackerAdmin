@@ -10,8 +10,8 @@ if (!isset($_SESSION['user_id'])) {
 <html>
 <head>
     <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="assets/js/admin.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+    <script src="asset/admin.js"></script>
 </head>
 <body>
     <h2>Admin Page</h2>
