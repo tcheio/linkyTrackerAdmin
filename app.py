@@ -31,6 +31,12 @@ def login():
             return 'Login Failed'
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('admin_id', None)
+    return redirect(url_for('login'))
+
+
 @app.route('/clients')
 def clients():
     if 'admin_id' not in session:

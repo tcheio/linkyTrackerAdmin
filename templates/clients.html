@@ -7,10 +7,27 @@
 </head>
 <body>
     <h2>Clients List</h2>
-    <ul>
-        {% for client in clients %}
-            <li><a href="{{ url_for('client_details', id=client.id) }}">{{ client.name }}</a></li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.tel }}</td>
+                    <td><a href="{{ url_for('client_details', id=client.id) }}">Voir détails</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
