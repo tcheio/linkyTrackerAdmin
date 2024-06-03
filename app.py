@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from models import db, Admin, Client
 import hashlib
+from jinja2 import TemplateNotFound
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/consoelec'
@@ -48,8 +49,11 @@ def clients():
 def client_details(id):
     if 'admin_id' not in session:
         return redirect(url_for('login'))
-    client = Client.query.get_or_404(id)
-    return render_template('client_details.html', client=client)
+    client = Client.query.get(id)
+    print(f"Rendering client detail for client ID: {client.id}")  # Debugging
+    return render_template('client_detail.html', client=client)
+
+
 
 if __name__ == '__main__':
     with app.app_context():
