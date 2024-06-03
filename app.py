@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from models import db, Admin, Client
+from models import db, Admin, Client, Conso
 import hashlib
 from jinja2 import TemplateNotFound
 
@@ -46,12 +46,16 @@ def clients():
     return render_template('clients.html', clients=clients)
 
 @app.route('/client/<int:id>')
-def client_details(id):
+def client_detail(id):
     if 'admin_id' not in session:
         return redirect(url_for('login'))
-    client = Client.query.get(id)
-    print(f"Rendering client detail for client ID: {client.id}")  # Debugging
-    return render_template('client_detail.html', client=client)
+    
+    client = Client.query.get_or_404(id)
+    consommations = Conso.query.filter_by(client=id).all()
+    
+    return render_template('client_detail.html', client=client, consommations=consommations)
+
+
 
 
 

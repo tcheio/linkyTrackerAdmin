@@ -11,6 +11,14 @@
     <p>Nom: {{ client.nom }}</p>
     <p>Email: {{ client.email }}</p>
     <p>Tel: {{ client.tel }}</p>
+
+    <h3>Consommations:</h3>
+    <ul>
+        {% for consommation in consommations %}
+            <li>Date: {{ consommation.date }}, kWh: {{ consommation.kw }}</li>
+        {% endfor %}
+    </ul>
+    
     <a href="{{ url_for('clients') }}">Retour à la liste des clients</a>
 </body>
 </html>
