@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Clients List</h2>
+    <ul>
+        {% for client in clients %}
+            <li><a href="{{ url_for('client_details', id=client.id) }}">{{ client.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
